@@ -60,10 +60,10 @@ CMake uses the host platform's default compiler. When cross-compiling embedded a
 
 | Variable             | Description                               | Examples                                                                        |
 | -                    | -                                         | -                                                                               |
-| `CMAKE_C_COMPILER`   | Must point to the C Compiler executable   | `"C:/Program Files/..../arm/bin/iccarm.exe"`<br>`"/opt/iarsystems/bxarm/arm/bin/iccarm"`   |
-| `CMAKE_CXX_COMPILER` | Must point to the C++ Compiler executable | `"C:/Program Files/..../arm/bin/iccarm.exe"`<br>`"/opt/iarsystems/bxarm/arm/bin/iccarm"`   |
-| `CMAKE_ASM_COMPILER` | Must point to the Assembler executable    | `"C:/Program Files/..../arm/bin/iasmarm.exe"`<br>`"/opt/iarsystems/bxarm/arm/bin/iasmarm"` |
-| `CMAKE_MAKE_PROGRAM` | Must point to the build tool executable | `"C:/Program Files/..../common/bin/ninja.exe"`<br>`"/opt/iarsystems/bxarm/common/bin/ninja"` |
+| `CMAKE_C_COMPILER`   | Must point to the C Compiler executable   | `"C:/Program Files/..../arm/bin/iccarm.exe"`<br>`"/opt/iar/cxarm/arm/bin/iccarm"`   |
+| `CMAKE_CXX_COMPILER` | Must point to the C++ Compiler executable | `"C:/Program Files/..../arm/bin/iccarm.exe"`<br>`"/opt/iar/cxarm/arm/bin/iccarm"`   |
+| `CMAKE_ASM_COMPILER` | Must point to the Assembler executable    | `"C:/Program Files/..../arm/bin/iasmarm.exe"`<br>`"/opt/iar/cxarm/arm/bin/iasmarm"` |
+| `CMAKE_MAKE_PROGRAM` | Must point to the build tool executable | `"C:/Program Files/..../common/bin/ninja.exe"`<br>`"/opt/iar/cxarm/common/bin/ninja"` |
 
 During the configuration phase, CMake reads these variables from:
 - a separate file called "toolchain file" that you invoke `cmake` with `--toolchain /path/to/<filename>.cmake` (see provided example files [bxarm.cmake](tutorial/bxarm.cmake) and [ewarm.cmake](tutorial/ewarm.cmake)) -or-
@@ -108,11 +108,11 @@ enable_testing()
 - Then use [`add_test()`](https://cmake.org/cmake/help/latest/command/add_test.html#add-test) to encapsulate the command line `cspybat` needs. In the example below, the parameters are adjusted for simulating a generic Arm Cortex-M4 target environment:
 ```cmake
 add_test(NAME tutorialTest
-         COMMAND /opt/iarsystems/bxarm/common/bin/CSpyBat
+         COMMAND /opt/iar/cxarm/common/bin/CSpyBat
          # C-SPY drivers for the Arm simulator via command line interface
-         /opt/iarsystems/bxarm/arm/bin/libarmPROC.so
-         /opt/iarsystems/bxarm/arm/bin/libarmSIM2.so
-         --plugin=/opt/iarsystems/bxarm/arm/bin/libarmLibsupportUniversal.so
+         /opt/iar/cxarm/arm/bin/libarmPROC.so
+         /opt/iar/cxarm/arm/bin/libarmSIM2.so
+         --plugin=/opt/iar/cxarm/arm/bin/libarmLibsupportUniversal.so
          # The target executable (built with debug information)
          --debug_file=$<TARGET_FILE:tutorial>
          # C-SPY driver options
