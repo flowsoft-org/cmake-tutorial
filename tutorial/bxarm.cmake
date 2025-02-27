@@ -5,9 +5,9 @@ set(CMAKE_SYSTEM_NAME Generic)
 
 # Set CMake to use the IAR C/C++ Compiler from the IAR Build Tools for Arm
 # Update if using a different supported target or operating system
-set(CMAKE_ASM_COMPILER /opt/iarsystems/bxarm/arm/bin/iasmarm)
-set(CMAKE_C_COMPILER   /opt/iarsystems/bxarm/arm/bin/iccarm)
-set(CMAKE_CXX_COMPILER /opt/iarsystems/bxarm/arm/bin/iccarm)
+set(CMAKE_ASM_COMPILER /opt/iar/cxarm/arm/bin/iasmarm)
+set(CMAKE_C_COMPILER   /opt/iar/cxarm/arm/bin/iccarm)
+set(CMAKE_CXX_COMPILER /opt/iar/cxarm/arm/bin/iccarm)
 
 # Avoids running the linker during try_compile()
 set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
@@ -21,7 +21,7 @@ if(CMAKE_GENERATOR MATCHES "^Ninja.*$")
   find_program(CMAKE_MAKE_PROGRAM
     NAMES ninja
     PATHS $ENV{PATH}
-          /opt/iarsystems/bxarm/common/bin
+          /opt/iar/cxarm/common/bin
     REQUIRED)
 endif()
 

@@ -21,11 +21,11 @@ target_link_options(libs PRIVATE
 enable_testing()
 
 add_test(NAME libs-test
-         COMMAND /opt/iarsystems/bxarm/common/bin/CSpyBat
+         COMMAND /opt/iar/cxarm/common/bin/CSpyBat
          # C-SPY drivers for the Arm simulator via command line interface
-         /opt/iarsystems/bxarm/arm/bin/libarmPROC.so
-         /opt/iarsystems/bxarm/arm/bin/libarmSIM2.so
-         --plugin=/opt/iarsystems/bxarm/arm/bin/libarmLibsupportUniversal.so
+         /opt/iar/cxarm/arm/bin/libarmPROC.so
+         /opt/iar/cxarm/arm/bin/libarmSIM2.so
+         --plugin=/opt/iar/cxarm/arm/bin/libarmLibsupportUniversal.so
          # The target executable (built with debug information)
          --debug_file=$<TARGET_FILE:libs>
          # C-SPY driver options
