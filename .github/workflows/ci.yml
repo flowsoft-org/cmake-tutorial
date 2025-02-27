@@ -1,0 +1,12 @@
+name: Continuous Integration (CI)
+on:
+  push:
+
+jobs:
+  ci:
+    runs-on: self-hosted
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
