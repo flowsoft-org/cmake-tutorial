@@ -23,3 +23,9 @@ jobs:
           cmake --build .
         name: Run CMAKE
         working-directory: ./tutorial
+
+      - run: |
+          echo "Execute Tests..."
+          ctest
+        name: Run Tests
+        working-directory: ./tutorial/build
