@@ -1,0 +1,25 @@
+name: Continuous Integration (CI)
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  ci:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+
+      - run: |
+          echo "Check Compiler..."
+          /opt/iar/cxarm/arm/bin/iccarm --version
+        name: Check Compiler License and Version
+
+      - run: |
+          echo "Do CI..."
+          # Add your CI commands here
+          mkdir -p ./build
+          cd ./build
+          cmake .. -G Ninja --toolchain ../bxarm.cmake
+          cmake --build .
+        name: Run CMAKE
+        working-directory: ./tutorial
