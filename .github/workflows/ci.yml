@@ -23,3 +23,9 @@ jobs:
           cmake --build .
         name: Run CMAKE
         working-directory: ./tutorial
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts
+          path: |
+            tutorial/build/**/*
